@@ -1,0 +1,6 @@
+What is Ai (Artificial Intelligence)
+ - any artificial system that preforms tasks in unpredictable circumstances without significant human oversight
+ - There is no easy way to explain what ai is
+ - an ai is anything that can take data and learn or use that data
+
+

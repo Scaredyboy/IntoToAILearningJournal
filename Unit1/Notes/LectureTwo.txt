@@ -1,0 +1,17 @@
+Ai terms
+ - Algorithm: can always be determined
+ - Artificial Intelligence
+ - Atonomous
+ - Backward chaining
+ - Bias: Assumptions made by the model or the people that made it
+ - Big Data: datasets that are too large for traditional data processes
+ - Bounding box: used box in  videos
+ - Context window: maximum numbers of tokens that an ai model can process 
+ - Emergent Behaviour: unexpected behaviour from the ai
+ - Generative Ai: Give it a promt it creates somthing from it
+ - hallucination: For Ai it is making somthing up that wasnt there before(more of just an error)
+ - Large Language Model
+ - Meta Prompt: the prompt the Ai was given by the creators telling it how to answer
+ - Prompt Engineering: putting correct prompts for the best output
+ - Token: smallest unit of text that an Ai model processes
+ - Tokenizer: how an ai model turns your prompt into tokens
