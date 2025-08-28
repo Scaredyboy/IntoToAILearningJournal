@@ -1,0 +1,44 @@
+Ethan Umphress
+8/28/25
+Ai Models Notes
+
+There are plenty of different ai models and there are teir lists with all the Ais 
+
+Wrapper Ai is an Ai that the company didnt make but are renting the Ai
+
+propriatary and closed source - Microsoft
+Free open source software - the users have the freedom to run, copy, distribute, there own
+
+to have an free open source Ai 
+	Run it locally(does not fully mean its free open source)
+	Knowing which data it was fed
+	 example - llama(Meta Ai)
+
+Microsoft restarting the 3 mile island thats full of nucular power plants
+
+Recouces needed for running an Ai model
+	Extreme amounts of energy
+	
+Why is Ai getting more
+	amount of tokens per prompt
+	more usage by users 
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
