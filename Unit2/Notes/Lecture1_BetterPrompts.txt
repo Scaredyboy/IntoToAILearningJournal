@@ -1,0 +1,42 @@
+What is prompt engineering? 
+	- Where you guid the ai to do what you want with the shortest input for the best input
+	- Better user imput prompts will lead to more consistant work, efficent work, and it makes using ai cheaper
+	
+A Prompt: A prompt is the text input from the user to get the ai to create somthing
+	- Giving ai the same prompt twice will give a different output
+	
+Prompt tips:
+	- Be more clear and in depth with the wording
+	- Ask it to do EVERYTHING you want it to do (The Ai does not know what you want)
+	- If the Ai keeps failing try just rewording what you said
+		Example: Write a marketing plan.  
+				 Write a story about how this product fits ito the lives of the target customer demographic.
+	- Give constraints
+	
+	- Google steps for Prompt
+		Task: 
+			Persona (who the Ai is) 
+			Format: output type
+		Context:
+			Good: Give me some ideas for a birthday present. under $30
+			Great: Give me five ideas for a birthday present. my budget is $30. the gift is for a 29 year old who loves winter sports, 
+				   and has recently swithed to snowboarding from skiing.
+		Referance: 
+			Additional input data, ideas
+		Evaluate:
+			Evaluate the output
+			does it meet the requirments
+			is the format right
+			are the ideas good
+		Iterate:
+			Tell the Ai to fix any issues until its to your standards
+			Always be Iterating
+			issues would be with TCR (Task, Context, Referance)
+
+Random Notes:
+	Never forget the ai can just be wrong
+	input is cheaper than output 
+	try not to break your whole task into one prompt. Break your task up into multiple prompts
+	Larger prompts trying to get multiple things at once it will be a worse output
+	
+	
