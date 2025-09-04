@@ -1,0 +1,21 @@
+Ethan Umprhess 
+9/4/2025
+
+Ai dont know when it doesnt know
+
+Chain of though Prompting
+	breaking one larger prompt into smaller prompts
+	
+Chain of Density
+	original text
+	summerize the text
+	generated summeary
+		Is the summary concise enough
+			Yes: final consice summary
+			No: Prompt sumerize the previous generated text
+			
+RAG system 
+	Retrivial Augmented Generation
+	
+Ai agent: can do stuff real world
+	like work on files that you give it so you dont have to copy and paste what the AI gave you
