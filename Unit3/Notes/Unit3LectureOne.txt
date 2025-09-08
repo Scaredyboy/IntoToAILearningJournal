@@ -1,0 +1,18 @@
+What is multimedia
+	Any format of media - Video game, picture, video, speech
+	
+Key terms
+	text-to-speech:
+		- Converting written text-to-speech(tts)
+	voice cloning:
+		- Use a tool to convert text to sound like a sepcific voice
+	text-to-video
+		- Using a prompt to create a video
+	image-to-video
+		- Using an image that turns into a moving video
+		
+for engineering prompts
+	for audio give it an emotion for the video, explain what type of audio
+	for video use cinamatic terms, camera angle, lighting, style: documentary, artistic
+	
+	
