@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cookie Clicker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body class="bg-gray-100 flex flex-col min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-yellow-500 text-white shadow-md">
+      <div class="max-w-5xl mx-auto flex items-center justify-between p-4">
+        <div class="flex items-center space-x-3">
+          <img src="Assets/Cookie.jpg" alt="Logo" class="w-10 h-10 rounded-full" />
+          <h1 class="text-2xl font-bold">Cookie Clicker</h1>
+        </div>
+      </div>
+      <nav class="bg-yellow-600">
+        <div class="max-w-5xl mx-auto flex space-x-6 p-2">
+          <a href="#" class="text-white hover:underline">Home</a>
+          <a href="#" class="text-white hover:underline">Upgrades</a>
+          <a href="#" class="text-white hover:underline">Stats</a>
+          <a href="#" class="text-white hover:underline">About</a>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex flex-col items-center justify-center flex-grow p-6 space-y-8">
+      <div id="cookie-container" class="my-6">
+        <img
+          src="Assets/Cookie.jpg"
+          alt="Cookie"
+          id="cookie-image"
+          class="rounded-full shadow-lg cursor-pointer transition-transform active:scale-95"
+        />
+      </div>
+      <p class="text-lg">Clicks: <span id="click-count" class="text-2xl font-bold">0</span></p>
+
+      <!-- Passive Generation Display -->
+      <p class="text-lg">Passive: <span id="cps" class="text-2xl font-bold">0</span> cookies/sec</p>
+
+      <!-- Shop Section -->
+      <section id="shop" class="bg-white shadow-md rounded-lg p-6 w-full max-w-md">
+        <h2 class="text-xl font-bold mb-4">Shop</h2>
+        <div class="flex items-center justify-between mb-2">
+          <div>
+            <p class="font-semibold">Grandma 👵</p>
+            <p class="text-sm text-gray-600">Cost: 100 cookies</p>
+            <p class="text-sm text-gray-600">Owned: <span id="grandma-count">0</span></p>
+          </div>
+          <button
+            id="buy-grandma"
+            class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 disabled:opacity-50"
+          >
+            Buy
+          </button>
+        </div>
+      </section>
+
+      <!-- Achievements Section -->
+      <button id="toggle-achievements" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+        Toggle Achievements
+      </button>
+
+      <section id="achievements-panel" class="hidden bg-white shadow-md rounded-lg p-6 w-full max-w-2xl">
+        <h2 class="text-xl font-bold mb-4">Achievements</h2>
+        <div id="achievements-list" class="space-y-4"></div>
+      </section>
+    </main>
+
+    <!-- Notification Popup -->
+    <div id="achievement-popup" class="fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded shadow-lg hidden"></div>
+
+    <!-- Footer -->
+    <footer class="bg-yellow-500 text-white mt-auto">
+      <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between p-4 space-y-2 sm:space-y-0">
+        <a href="https://github.com/your-repo" target="_blank" class="hover:underline">Source Code</a>
+        <div class="flex space-x-4">
+          <a href="#" class="hover:underline">Twitter</a>
+          <a href="#" class="hover:underline">GitHub</a>
+          <a href="#" class="hover:underline">LinkedIn</a>
+        </div>
+      </div>
+    </footer>
+
+  </body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Mystic Merchant - RPG Item Shop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="parchment-bg min-h-screen">
+<header class="bg-gradient-to-r from-amber-900 to-amber-800 text-white shadow-lg">
+    <div class="container mx-auto px-4 py-6">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <div>
+                    <h1 class="fantasy-font text-3xl font-bold">The Mystic Merchant</h1>
+                    <p class="body-font text-amber-200">Finest Goods for Brave Adventurers</p>
+                </div>
+            </div>
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center space-x-2 bg-amber-800 px-4 py-2 rounded-lg">
+                    <span class="text-2xl">💰</span>
+                    <span class="body-font font-semibold" id="player-gold">5000g</span>
+                </div>
+                <button id="cart-btn"
+                        class="relative bg-rose-600 hover:bg-rose-700 px-4 py-2 rounded-lg transition-colors">
+                    <span class="text-xl">🛒</span>
+                    <span class="body-font ml-2">Cart</span>
+                    <span id="cart-count"
+                          class="absolute -top-2 -right-2 bg-pink-500 text-white text-xs rounded-full w-6 h-6 flex items-center justify-center hidden">0</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main class="container mx-auto px-4 py-8">
+    <div id="store-page" class="page">
+        <div class="text-center mb-8">
+            <h2 class="fantasy-font text-4xl font-bold text-slate-700 mb-4">Welcome to Our Shop</h2>
+            <p class="body-font text-lg text-slate-600">Discover legendary items to aid your adventures!</p>
+        </div>
+
+        <div id="items-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <!-- menu will be loaded from json file -->
+        </div>
+    </div>
+
+    <!--using "page hidden" to simulate multiple pages-->
+    <div id="checkout-page" class="page hidden">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-8">
+                <h2 class="fantasy-font text-4xl font-bold text-slate-700 mb-4">Checkout</h2>
+                <p class="body-font text-lg text-slate-600">{'Review your items and complete your purchase'}</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Cart Items -->
+                <div class="rpg-card rounded-lg p-6">
+                    <h3 class="fantasy-font text-2xl font-bold text-slate-700 mb-6">Your Items</h3>
+                    <div id="cart-items" class="space-y-4">
+                        <!-- Cart items will be populated here -->
+                    </div>
+                    <div class="border-t border-slate-300 pt-4 mt-6">
+                        <div class="flex justify-between items-center">
+                            <span class="fantasy-font text-xl font-bold text-slate-700">Total:</span>
+                            <span id="cart-total" class="gold-text text-2xl font-bold">0g</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rpg-card rounded-lg p-6">
+                    <h3 class="fantasy-font text-2xl font-bold text-slate-700 mb-6">Payment Method</h3>
+                    <div class="space-y-4">
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="radio" name="payment" value="gold-coins" class="text-rose-600" checked>
+                            <span class="text-2xl">💰</span>
+                            <span class="body-font font-semibold">Gold Coins</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="radio" name="payment" value="dragon-scale" class="text-rose-600">
+                            <span class="text-2xl">🐲</span>
+                            <span class="body-font font-semibold">Dragon Scale</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="radio" name="payment" value="magic-crystal" class="text-rose-600">
+                            <span class="text-2xl">💎</span>
+                            <span class="body-font font-semibold">Magic Crystal</span>
+                        </label>
+                        <label class="flex items-center space-x-3 cursor-pointer">
+                            <input type="radio" name="payment" value="ancient-rune" class="text-rose-600">
+                            <span class="text-2xl">📜</span>
+                            <span class="body-font font-semibold">Ancient Rune</span>
+                        </label>
+                    </div>
+
+                    <div class="mt-8 space-y-4">
+                        <button id="complete-purchase-btn"
+                                class="w-full bg-rose-600 hover:bg-rose-700 text-white py-3 px-6 rounded-lg transition-colors body-font font-semibold text-lg">
+                            Complete Purchase
+                        </button>
+                        <button id="back-to-shop-btn"
+                                class="w-full bg-slate-500 hover:bg-slate-600 text-white py-2 px-6 rounded-lg transition-colors body-font font-semibold">
+                            Back to Shop
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="confirmation-page" class="page hidden">
+        <div class="max-w-2xl mx-auto text-center">
+            <div class="rpg-card rounded-lg p-8">
+                <div class="text-6xl mb-6">✅</div>
+                <h2 class="fantasy-font text-4xl font-bold text-slate-700 mb-4">Order Confirmed!</h2>
+                <p class="body-font text-lg text-slate-600 mb-8">{'Thank you for your purchase, brave adventurer!'}</p>
+
+                <div class="bg-muted rounded-lg p-6 mb-8">
+                    <h3 class="fantasy-font text-xl font-bold text-slate-700 mb-4">Order Summary</h3>
+                    <div id="order-summary" class="space-y-2 text-left">
+                        <!-- Order summary will be populated here -->
+                    </div>
+                    <div class="border-t border-slate-300 pt-4 mt-4 flex justify-between items-center">
+                        <span class="fantasy-font text-lg font-bold text-slate-700">Total Paid:</span>
+                        <span id="total-paid" class="gold-text text-xl font-bold">0g</span>
+                    </div>
+                    <div class="mt-4 flex justify-between items-center">
+                        <span class="fantasy-font text-lg font-bold text-slate-700">Payment Method:</span>
+                        <span id="payment-method" class="body-font font-semibold">Gold Coins 💰</span>
+                    </div>
+                </div>
+
+                <button id="new-order-btn"
+                        class="bg-rose-600 hover:bg-rose-700 text-white py-3 px-8 rounded-lg transition-colors body-font font-semibold text-lg">
+                    Shop Again
+                </button>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+<script src="script.js"></script>
+</html>

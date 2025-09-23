@@ -1,0 +1,20 @@
+For this project I used a few different tools to create my podcast. I started with ChatGPT 
+which I used to generate the whole script for the podcast because I felt like I needed it 
+written out before I could move on to the audio part of the podcast. After I had the script, 
+I used Eleven Labs to create voices for the characters. Then I went to YouTube to find background 
+music to make the podcast sound fuller and not just 2 guys talking in silence. The whole process 
+worked but it was harder than I expected in some areas. The main challenge for me was trying to 
+find a free AI program that could read the script in a way that sounded decent enough. I tried 
+a lot of different voices and spent a lot of time testing them, but many of them didn’t sound 
+right or just couldn’t read the script at all. Eventually, I just went with the two of the voices 
+from Eleven Labs because they could read the script well and the voices were good enough, I could 
+actually listen to them speak over and over.
+
+Although I actually got the project to work for me, I just don’t like the way using AI feels. It 
+feels like a shortcut or even cheating, because instead of doing all the work myself I’m just 
+depending on the tech to fill in the gaps that I don’t want to do. It made the process easier, but 
+it didn’t feel anywhere near as genuine as if I had written, recorded, and edited everything on my own. 
+Something I realized through this experience though is that AI can be both simple and difficult at the 
+same time. Sometimes it gives you what you want right away, but other times it doesn’t work at all 
+the way you hoped. When it doesn’t work, it can feel like the only option is to start over completely, 
+which gets frustrating.

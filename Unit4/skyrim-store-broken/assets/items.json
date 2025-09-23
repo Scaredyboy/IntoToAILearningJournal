@@ -1,0 +1,25 @@
+{
+  "items": [
+    {
+      "id": "health-potion",
+      "name": "Health Potion",
+      "description": "Restores 50 HP instantly. Essential for any adventurer!",
+      "price": 100,
+      "image": "assets/health.png"
+    },
+    {
+      "id": "horse-armor",
+      "name": "Horse Armor",
+      "description": "Legendary protection for your trusty steed. +50 Defense!",
+      "price": 1050,
+      "image": "assets/horseArmor.webp"
+    },
+    {
+      "id": "sweet-roll",
+      "name": "Sweet Roll",
+      "description": "Delicious pastry that restores stamina. A traveler's favorite!",
+      "price": 10,
+      "image": "assets/sweetRoll.png"
+    }
+  ]
+}
