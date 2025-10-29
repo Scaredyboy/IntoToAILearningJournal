@@ -1,0 +1,498 @@
+{
+  "name": "Multi Methods API Endpoint",
+  "nodes": [
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      },
+      "id": "80f35c35-4cb4-42e4-a770-1f1477e3d3cc",
+      "name": "Respond to Webhook",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [
+        288,
+        80
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {
+          "responseCode": 201
+        }
+      },
+      "id": "08ff9ed6-52c4-4c0d-a814-e1b4a41327a6",
+      "name": "Respond to Webhook1",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [
+        288,
+        1120
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "651394c6-d30d-465a-a8ec-042c00559509",
+      "name": "Respond to Webhook2",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [
+        288,
+        608
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {}
+      },
+      "id": "ac7161b1-ee6e-4ea4-9f80-8de80b08f1e6",
+      "name": "Respond to Webhook4",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [
+        288,
+        864
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "content": "#### Creation\nCreates a new record",
+        "height": 255.253864930838,
+        "width": 514,
+        "color": 4
+      },
+      "id": "61ce80c4-dfbd-477e-8d06-f2273b13e273",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        1040
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "#### Get All\nRetrieves all records",
+        "height": 228.69080553295362,
+        "width": 514,
+        "color": 4
+      },
+      "id": "9e86258e-eecd-4c9a-bfc6-43ffeed1f217",
+      "name": "Sticky Note1",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        784
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "#### Get\nRetrieves a single record",
+        "height": 228,
+        "width": 514,
+        "color": 4
+      },
+      "id": "bf71ee28-dc90-42d6-9a50-8ecea607bfc3",
+      "name": "Sticky Note2",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        0
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "content": "#### Update\nUpdates of an existing record",
+        "height": 248.84784377542707,
+        "width": 508.29454841334433,
+        "color": 4
+      },
+      "id": "b6c582dd-b81c-4d04-8641-35eb2abc7398",
+      "name": "Sticky Note3",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        528
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "respondWith": "allIncomingItems",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "c5976f17-6354-4773-8bf2-1d3c70887933",
+      "name": "Respond to Webhook5",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "position": [
+        480,
+        352
+      ],
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "content": "#### Delete\nDeletes a record",
+        "height": 267.43205858421476,
+        "width": 737.8307567127741,
+        "color": 4
+      },
+      "id": "b81a1897-4806-46b4-832f-3448f957ccbf",
+      "name": "Sticky Note4",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        240
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "multipleMethods": true,
+        "path": "employees",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "5d6f0acb-2a77-4f7c-928f-932564d4a2be",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "position": [
+        -448,
+        992
+      ],
+      "webhookId": "580ccc56-f308-4b64-961d-38323501a170",
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "multipleMethods": true,
+        "httpMethod": [
+          "GET",
+          "DELETE",
+          "PUT"
+        ],
+        "path": "customers/:id",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "5c02b65d-bec8-44d6-bfa7-0ac8932f362d",
+      "name": "Webhook (with ID)",
+      "type": "n8n-nodes-base.webhook",
+      "position": [
+        -448,
+        352
+      ],
+      "webhookId": "580ccc56-f308-4b64-961d-38323501a170",
+      "typeVersion": 2
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "employees",
+          "mode": "list",
+          "cachedResultName": "employees"
+        },
+        "returnAll": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.5,
+      "position": [
+        64,
+        864
+      ],
+      "id": "43354bc5-bec9-4259-be89-ebd2c08288b7",
+      "name": "Select rows from a table",
+      "credentials": {
+        "mySql": {
+          "id": "vYSzi6kMFTk6UfUp",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "table": {
+          "__rl": true,
+          "value": "employees",
+          "mode": "list",
+          "cachedResultName": "employees"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.5,
+      "position": [
+        96,
+        1120
+      ],
+      "id": "fe8723df-2195-4869-929f-408d701cd2b8",
+      "name": "Insert rows in a table",
+      "credentials": {
+        "mySql": {
+          "id": "vYSzi6kMFTk6UfUp",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "table": {
+          "__rl": true,
+          "value": "employees",
+          "mode": "list",
+          "cachedResultName": "employees"
+        },
+        "columnToMatchOn": "employeeNumber",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.5,
+      "position": [
+        96,
+        608
+      ],
+      "id": "c14e414f-f4c7-4a1e-919b-c642acca22d6",
+      "name": "Update rows in a table",
+      "credentials": {
+        "mySql": {
+          "id": "vYSzi6kMFTk6UfUp",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "employees",
+          "mode": "list",
+          "cachedResultName": "employees"
+        },
+        "limit": 10,
+        "where": {
+          "values": [
+            {
+              "column": "employeeNumber",
+              "value": "=({employeeNumber} = {{ $json.params.employeeNumber }})"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.5,
+      "position": [
+        64,
+        80
+      ],
+      "id": "34304b8c-533a-40be-a348-18d95fcdf823",
+      "name": "Select rows from a table1",
+      "credentials": {
+        "mySql": {
+          "id": "vYSzi6kMFTk6UfUp",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "select",
+        "table": {
+          "__rl": true,
+          "value": "employees",
+          "mode": "list",
+          "cachedResultName": "employees"
+        },
+        "limit": 10,
+        "where": {
+          "values": [
+            {
+              "column": "employeeNumber",
+              "value": "=({employeeNumber} = {{ $json.params.employeeNumber }})"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.5,
+      "position": [
+        64,
+        352
+      ],
+      "id": "47fb208e-8a4e-490f-9d07-381070afc18e",
+      "name": "Select rows from a table2",
+      "credentials": {
+        "mySql": {
+          "id": "vYSzi6kMFTk6UfUp",
+          "name": "MySQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "deleteTable",
+        "table": {
+          "__rl": true,
+          "value": "employees",
+          "mode": "list",
+          "cachedResultName": "employees"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mySql",
+      "typeVersion": 2.5,
+      "position": [
+        256,
+        352
+      ],
+      "id": "9740be0b-ce35-4792-93da-d211173ede40",
+      "name": "Delete table or rows",
+      "credentials": {
+        "mySql": {
+          "id": "vYSzi6kMFTk6UfUp",
+          "name": "MySQL account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Select rows from a table",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Insert rows in a table",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook (with ID)": {
+      "main": [
+        [
+          {
+            "node": "Select rows from a table1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Select rows from a table2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Update rows in a table",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select rows from a table": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Insert rows in a table": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update rows in a table": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select rows from a table2": {
+      "main": [
+        [
+          {
+            "node": "Delete table or rows",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select rows from a table1": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete table or rows": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "9aeacc12-4d40-41a1-8585-70d767f075d9",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "475b14012a8cd85fdf7abb73c2db2249cd0dcbea29c2619c9b1a773347dbf838"
+  },
+  "id": "DtRbKgCak8qDIPlm",
+  "tags": []
+}

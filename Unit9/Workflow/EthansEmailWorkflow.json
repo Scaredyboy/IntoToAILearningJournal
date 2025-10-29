@@ -1,0 +1,307 @@
+{
+  "name": "My Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 7
+            }
+          ]
+        }
+      },
+      "id": "81b38358-b437-4333-b818-49b0d72f5234",
+      "name": "Schedule Daily Trigger\t",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "position": [
+        -1408,
+        256
+      ],
+      "typeVersion": 1.2
+    },
+    {
+      "parameters": {
+        "url": "https://www.ft.com/",
+        "options": {
+          "timeout": 10000
+        }
+      },
+      "id": "8c506f2c-8817-499b-a1b7-74ebfd2b4d6f",
+      "name": "Fetch Financial News Webpage\t",
+      "type": "n8n-nodes-base.httpRequest",
+      "position": [
+        -1184,
+        256
+      ],
+      "notesInFlow": true,
+      "typeVersion": 4.2,
+      "notes": "Url : https://www.ft.com/"
+    },
+    {
+      "parameters": {},
+      "id": "f0ed5209-b059-43b3-87fb-7fca578748cd",
+      "name": "Delay to Ensure Page Load\t",
+      "type": "n8n-nodes-base.wait",
+      "position": [
+        -976,
+        256
+      ],
+      "webhookId": "adff7750-f9b0-4796-915d-9c28dcc878b0",
+      "typeVersion": 1.1
+    },
+    {
+      "parameters": {
+        "operation": "extractHtmlContent",
+        "extractionValues": {
+          "values": [
+            {
+              "key": "Headline #1",
+              "cssSelector": "#site-content > div:nth-child(1) > section > div > div > div.layout-desktop__grid.layout-desktop__grid--span4.layout-desktop__grid--column-start-1.layout-desktop__grid--row-start-1.layout-desktop__grid--with-border.layout--default > div > div > div > div.story-group-stacked__primary-story > div > div > div > div > div.primary-story__teaser"
+            },
+            {
+              "key": "Headline #2",
+              "cssSelector": "#site-content > div:nth-child(1) > section > div > div > div.layout-desktop__grid.layout-desktop__grid--span6.layout-desktop__grid--column-start-5.layout-desktop__grid--row-start-1.layout-desktop__grid--with-border.layout--default > div > div > div > div > div > div.story-group__article.story-group__article--featured > div > div.featured-story-content > div.headline.js-teaser-headline.headline--scale-5.headline--color-black > a > span"
+            },
+            {
+              "key": "Editor's Picks",
+              "cssSelector": "#site-content > div:nth-child(1) > section > div > div > div.layout-desktop__grid.layout-desktop__grid--span2.layout-desktop__grid--column-start-11.layout-desktop__grid--row-start-1.layout--default > div"
+            },
+            {
+              "key": "Top Stories",
+              "cssSelector": "#site-content > div:nth-child(3) > section > div",
+              "skipSelectors": "h2"
+            },
+            {
+              "key": "Spotlight",
+              "cssSelector": "#site-content > div:nth-child(6) > section",
+              "skipSelectors": "h2"
+            },
+            {
+              "key": "Various News",
+              "cssSelector": "#site-content > div:nth-child(8) > section",
+              "skipSelectors": "h2"
+            },
+            {
+              "key": "Europe News",
+              "cssSelector": "#site-content > div:nth-child(13) > section",
+              "skipSelectors": "h2"
+            }
+          ]
+        },
+        "options": {
+          "cleanUpText": true
+        }
+      },
+      "id": "6351475d-e0ff-4a91-9a5b-b045c79eb43c",
+      "name": "Extract News Headlines & Text\t",
+      "type": "n8n-nodes-base.html",
+      "position": [
+        -752,
+        256
+      ],
+      "notesInFlow": true,
+      "typeVersion": 1.2,
+      "notes": "Extract selected headlines, editor's picks, spotlight etc."
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5412a5ee-dbbe-4fcc-98a5-6fafc37b94d1",
+              "name": "All data",
+              "type": "string",
+              "value": "=News :\n{{ $json['Headline #1'] }}\n\n\n\nFinancial news :\n\n{{ $('Extract News Headlines & Text\t').item.json['Headline #1'] }};\n\n{{ $('Extract News Headlines & Text\t').item.json['Headline #2'] }};\n\n{{ $('Extract News Headlines & Text\t').item.json['Editor\\'s Picks'] }};\n\n{{ $('Extract News Headlines & Text\t').item.json['Top Stories'] }};\n\n{{ $('Extract News Headlines & Text\t').item.json.Spotlight }};\n\n{{ $('Extract News Headlines & Text\t').item.json['Various News'] }};\n\n{{ $('Extract News Headlines & Text\t').item.json['Europe News'] }};\n\n"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "b17ea7c9-fc20-449b-ac0d-27eef0fd7643",
+      "name": "Clean Extracted News Data\t",
+      "type": "n8n-nodes-base.set",
+      "position": [
+        -528,
+        256
+      ],
+      "typeVersion": 3.4
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Summarise this news :\n\n{{ $json['All data'] }}",
+        "options": {
+          "systemMessage": "You are an AI financial analyst. Your role is to read, understand, and summarize key financial news from today. The goal is to provide investors with a clear and concise market overview to support better investment decisions.\n\n\nInvestor Outlook\nToday’s news points to [bullish/bearish/neutral] sentiment. Watch for [economic event/earnings report] tomorrow, which could influence market direction.\n"
+        }
+      },
+      "id": "0fb26dc8-7fba-4a28-a41c-5c933d136e8d",
+      "name": "AI Financial News Summarizer\t",
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "position": [
+        -304,
+        256
+      ],
+      "typeVersion": 1.6
+    },
+    {
+      "parameters": {
+        "fromEmail": "NewsBot@gmail.com",
+        "toEmail": "ethanumphress@gmail.com",
+        "subject": "Today's News",
+        "emailFormat": "text",
+        "text": "={{ $json.output }}",
+        "options": {}
+      },
+      "id": "dcf4b540-e8ae-4774-a5cf-75468e11d020",
+      "name": "Email Daily Financial Summary\t",
+      "type": "n8n-nodes-base.emailSend",
+      "position": [
+        80,
+        256
+      ],
+      "webhookId": "5ca3faf6-d857-4d58-8676-90e392fa9cc2",
+      "typeVersion": 2.1,
+      "credentials": {
+        "smtp": {
+          "id": "aCS9TaSV4R3Sgp3J",
+          "name": "SMTP account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": "email-guru:latest",
+        "options": {}
+      },
+      "id": "de3fd5a4-87a3-4e1b-9957-50a27cdc7d64",
+      "name": "LLM Chat Model",
+      "type": "@n8n/n8n-nodes-langchain.lmChatOllama",
+      "position": [
+        -256,
+        464
+      ],
+      "typeVersion": 1,
+      "credentials": {
+        "ollamaApi": {
+          "id": "1G1IKxBlKb9QEiJk",
+          "name": "Ollama account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "This workflow auto-fetches top financial headlines, cleans the content, and uses AI to summarize it into a short investor-friendly email",
+        "height": 96,
+        "width": 320,
+        "color": 5
+      },
+      "id": "50fc2d77-0807-4a49-b23b-b3789c713f59",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -752,
+        96
+      ],
+      "typeVersion": 1
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "LLM Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Financial News Summarizer\t",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Daily Trigger\t": {
+      "main": [
+        [
+          {
+            "node": "Fetch Financial News Webpage\t",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clean Extracted News Data\t": {
+      "main": [
+        [
+          {
+            "node": "AI Financial News Summarizer\t",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delay to Ensure Page Load\t": {
+      "main": [
+        [
+          {
+            "node": "Extract News Headlines & Text\t",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Financial News Summarizer\t": {
+      "main": [
+        [
+          {
+            "node": "Email Daily Financial Summary\t",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch Financial News Webpage\t": {
+      "main": [
+        [
+          {
+            "node": "Delay to Ensure Page Load\t",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract News Headlines & Text\t": {
+      "main": [
+        [
+          {
+            "node": "Clean Extracted News Data\t",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "dbae074a-09ae-4558-9c6b-2527b1b43f9c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "2ec7cc14874114a3c8d027fe1eaaee0035e103392719b11f385ea0e979bc1eee"
+  },
+  "id": "GnmK6VHrThJhEbuU",
+  "tags": [
+    {
+      "createdAt": "2025-10-23T14:51:35.166Z",
+      "updatedAt": "2025-10-23T14:51:35.166Z",
+      "id": "B6JitXJ9fIGZDTxq",
+      "name": "Personal Assistant"
+    }
+  ]
+}
